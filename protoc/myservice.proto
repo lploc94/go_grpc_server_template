@@ -1,0 +1,29 @@
+//author: Thorn
+//date: 2025/3/14
+//version: 1.0
+syntax = "proto3";
+
+package myservice;
+
+option go_package = "protoc/myservice";
+
+message MyRequest {
+    string a = 1;
+    int32 b = 2;
+    repeated string c = 3;
+    map<string, string> d = 4;
+}
+
+message MyResponse {
+    string message = 1;
+}
+
+
+// WTPHService represents the WTPH service.
+service MyService {
+    //sample method
+    rpc MyMethod(MyRequest) returns (MyResponse);
+    
+}
+//protoc --proto_path=./protoc --go_out=. --go-grpc_out=. myservice.proto
+
